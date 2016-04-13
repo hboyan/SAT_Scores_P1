@@ -1,4 +1,4 @@
-#AWAITING LUCY FEEDBACK
+#MUCH THANKS TO JESSE
 
 #Author: Haley Boyan
 #Review problem 5 (hard)
@@ -22,48 +22,27 @@ def pearsoncor(x,y):
     print
 
     #Calculate the pearson correlation between the two lists and assign the value to variable pearson_r.
-    totalx = 0
-    totaly = 0
-    totalxy = 0
-    totalx2 = 0
-    totaly2 = 0
-    count = 0
-    for k in range(len(x)):
-        xy=x[k]*y[k]
-        x2=x[k]*x[k]
-        y2=y[k]*y[k]
-        totalx += x[k]
-        totaly += y[k]
-        totalxy += xy
-        totalx2 += x2
-        totaly2 += y2
-        count += 1
-    pearson_r = ((count*totalxy) - (totalx*totaly)) / np.sqrt(((count*totalx2)-(totalx*totalx))*((count*totaly2)-(totaly*totaly)))
-    print "Pearson correlation from my formula: "
-    print pearson_r
-
     #Create a variable X_deviation that is each element of X minus the mean of X.
     x_deviation = []
-    for i in range(0,len(x)-1):
-        x_deviation.append(abs(x[i] - np.mean(x)))
+    for i in x:
+        x_deviation.append(i - np.mean(x))
 
     #Create a variable Y_deviation that is each element of Y minus the mean of Y.
     y_deviation = []
-    for i in range(0,len(x)-1):
-        y_deviation.append(abs(y[i] - np.mean(y)))
+    for i in y:
+        y_deviation.append(i - np.mean(y))
 
     #Create a variable sqrt_X_deviation_sq that is the square root
     #of the sum of the square of each element of X_deviation.
     #repeat for y
-    sqrt_X_deviation_sq = np.sqrt(np.sum(x_deviation))
-    sqrt_Y_deviation_sq = np.sqrt(np.sum(y_deviation))
+    sqrt_X_deviation_sq = np.sqrt(np.sum(i**2 for i in x_deviation))
+    sqrt_Y_deviation_sq = np.sqrt(np.sum(i**2 for i in y_deviation))
 
     #Create a variable sum_XY_deviation that is the sum of each element of X and Y multiplied by
     #each other, in order. You can use the zip() function to iterate through two lists at the same time:
     sum_XY_deviation = 0
     for x_d, y_d in zip(x_deviation, y_deviation):
-        combo = x_d * y_d
-        sum_XY_deviation += combo
+        sum_XY_deviation += (x_d*y_d)
 
     #pearson_r is equal to sum_XY_deviation divided by (sqrt_X_deviation_sq * sqrt_Y_deviation_sq)
     pearson_r = sum_XY_deviation / (sqrt_X_deviation_sq * sqrt_Y_deviation_sq)
