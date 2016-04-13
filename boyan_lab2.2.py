@@ -54,7 +54,7 @@ def choice():
                 print("That's not a valid choice, please try again. ")
             choice=str(raw_input("What shape do you have? (s = square, r = rectangle, c = cuboid, q = quit)"))
 
-        #a common problem would be if they didn't enter a number to do the calculations. We should prepare to handle that error. 
+        #a common problem would be if they didn't enter a number to do the calculations. We should prepare to handle that error.
         except ValueError:
             print("Oh no! That's not a valid number. Let's try again.")
             choice=str(raw_input("What shape do you have? (s = square, r = rectangle, c = cuboid, q = quit)"))
