@@ -38,7 +38,3 @@ print "4: x[::]"
 print array1[::]
 print "5: x[1::2,:5:3] (first slices from index 1 to end with steps of 2, then slices the result from beginning to index 5 in steps of 3)"
 print array1[1::2,:5:3]
-print "Advanced indexing "
-print "5: x[1,2]"
-print array1[1,2]
-print
